@@ -1,0 +1,19 @@
+{
+  "name": "js-battleship",
+  "version": "1.0.0",
+  "description": "Jogo de batalha naval desenvolvido em javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/br-adriel/js-battleship.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/br-adriel/js-battleship/issues"
+  },
+  "homepage": "https://github.com/br-adriel/js-battleship#readme"
+}
