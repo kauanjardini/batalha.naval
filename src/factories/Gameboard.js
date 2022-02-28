@@ -1,19 +1,26 @@
 function Gameboard() {
-  const gameboard = [];
-  for (let i = 0; i < 10; i += 1) {
-    const arr = [];
-    for (let j = 0; j < 10; j += 1) {
-      const obj = {
-        ship: {},
-        shipPosition: -1,
-        hasShip: false,
-        attacked: false,
-        hit: false,
-      };
-      arr.push(obj);
+  let gameboard;
+
+  function clear() {
+    gameboard = [];
+    for (let i = 0; i < 10; i += 1) {
+      const arr = [];
+      for (let j = 0; j < 10; j += 1) {
+        const obj = {
+          ship: {},
+          shipPosition: -1,
+          hasShip: false,
+          attacked: false,
+          hit: false,
+        };
+        arr.push(obj);
+      }
+      gameboard.push(arr);
     }
-    gameboard.push(arr);
   }
+
+  // initialize gameboard
+  clear();
 
   function addShip(ship, coordinates, vertically) {
     const x = coordinates[0];
@@ -89,7 +96,8 @@ function Gameboard() {
 
     return true;
   }
-  return { addShip, board, receiveAttack, allShipsSunked };
+
+  return { addShip, board, clear, receiveAttack, allShipsSunked };
 }
 
 export default Gameboard;
