@@ -94,3 +94,22 @@ test("O gameboard relata que todas as embarcações afundaram", () => {
   g.receiveAttack([1, 0]);
   expect(g.allShipsSunked()).toBe(true);
 });
+
+test("A funcao clear reinicia o tabuleiro apos adicionar embracacoes", () => {
+  const s1 = { length: 1, isSunk: () => true, hit: () => true };
+  const s2 = { length: 1, isSunk: () => true, hit: () => true };
+  g.addShip(s1, [0, 0], false);
+  g.addShip(s2, [1, 0], false);
+  g.clear();
+  expect(g.board()[1][0].hasShip).toBe(false);
+});
+
+test("A funcao clear reinicia o tabuleiro apos jogada", () => {
+  const s1 = { length: 1, isSunk: () => true, hit: () => true };
+  const s2 = { length: 1, isSunk: () => true, hit: () => true };
+  g.addShip(s1, [0, 0], false);
+  g.addShip(s2, [1, 0], false);
+  g.receiveAttack([0, 0]);
+  g.clear();
+  expect(g.board()[0][0].hasShip).toBe(false);
+});
