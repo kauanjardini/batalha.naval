@@ -32,3 +32,21 @@ test("O gameboard emite erro quando ja ha uma embarcacao posicionada", () => {
   g.addShip(s, [0, 0], false);
   expect(() => g.addShip(s2, [0, 0], false)).toThrow();
 });
+
+test("O gameboard retorna 'hit' quando ataca um navio", () => {
+  const s = { length: 4 };
+  g.addShip(s, [0, 0], false);
+  expect(g.receiveAttack([0, 0])).toBe("hit");
+});
+
+test("O gameboard retorna 'miss' quando erra o ataque", () => {
+  const s = { length: 4 };
+  g.addShip(s, [0, 0], false);
+  expect(g.receiveAttack([0, 0])).toBe("miss");
+});
+
+test("O gameboard retorna 'already attacked' quando ataca lugar ja atacado", () => {
+  const s = { length: 4 };
+  g.addShip(s, [0, 0], false);
+  expect(g.receiveAttack([0, 0])).toBe("already attacked");
+});
