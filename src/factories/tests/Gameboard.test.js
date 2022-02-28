@@ -34,26 +34,26 @@ test("O gameboard emite erro quando ja ha uma embarcacao posicionada", () => {
 });
 
 test("O gameboard retorna 'hit' quando ataca um navio", () => {
-  const s = { length: 4 };
+  const s = { length: 4, hit: () => true };
   g.addShip(s, [0, 0], false);
   expect(g.receiveAttack([0, 0])).toBe("hit");
 });
 
 test("O gameboard retorna 'miss' quando erra o ataque", () => {
-  const s = { length: 4 };
+  const s = { length: 4, hit: () => true };
   g.addShip(s, [0, 0], false);
   expect(g.receiveAttack([0, 1])).toBe("miss");
 });
 
 test("O gameboard retorna 'already attacked' quando ataca lugar ja atacado", () => {
-  const s = { length: 4 };
+  const s = { length: 4, hit: () => true };
   g.addShip(s, [0, 0], false);
   g.receiveAttack([0, 0]);
   expect(g.receiveAttack([0, 0])).toBe("already attacked");
 });
 
 test("O gameboard registra os ataques acertados", () => {
-  const s = { length: 4 };
+  const s = { length: 4, hit: () => true };
   g.addShip(s, [0, 0], false);
   g.receiveAttack([0, 0]);
   expect(g.board()[0][0].attacked).toBe(true);
@@ -61,7 +61,7 @@ test("O gameboard registra os ataques acertados", () => {
 });
 
 test("O gameboard registra os ataques errados", () => {
-  const s = { length: 4 };
+  const s = { length: 4, hit: () => true };
   g.addShip(s, [0, 0], false);
   g.receiveAttack([4, 4]);
   expect(g.board()[0][0].attacked).toBe(true);
@@ -69,8 +69,8 @@ test("O gameboard registra os ataques errados", () => {
 });
 
 test("O gameboard relata que todas as embarcações afundaram", () => {
-  const s1 = { length: 1 };
-  const s2 = { length: 1 };
+  const s1 = { length: 1, isSunk: () => true, hit: () => true };
+  const s2 = { length: 1, isSunk: () => true, hit: () => true };
   g.addShip(s1, [0, 0], false);
   g.addShip(s2, [1, 0], false);
   g.receiveAttack([0, 0]);
