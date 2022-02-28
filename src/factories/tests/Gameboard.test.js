@@ -50,3 +50,19 @@ test("O gameboard retorna 'already attacked' quando ataca lugar ja atacado", () 
   g.addShip(s, [0, 0], false);
   expect(g.receiveAttack([0, 0])).toBe("already attacked");
 });
+
+test("O gameboard registra os ataques acertados", () => {
+  const s = { length: 4 };
+  g.addShip(s, [0, 0], false);
+  g.receiveAttack([0, 0]);
+  expect(g.board()[0][0].attacked).toBe(true);
+  expect(g.board()[0][0].hit).toBe(true);
+});
+
+test("O gameboard registra os ataques errados", () => {
+  const s = { length: 4 };
+  g.addShip(s, [0, 0], false);
+  g.receiveAttack([4, 4]);
+  expect(g.board()[0][0].attacked).toBe(true);
+  expect(g.board()[0][0].hit).toBe(false);
+});
