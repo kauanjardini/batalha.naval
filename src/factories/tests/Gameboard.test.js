@@ -64,8 +64,25 @@ test("O gameboard registra os ataques errados", () => {
   const s = { length: 4, hit: () => true };
   g.addShip(s, [0, 0], false);
   g.receiveAttack([4, 4]);
-  expect(g.board()[0][0].attacked).toBe(true);
-  expect(g.board()[0][0].hit).toBe(false);
+  expect(g.board()[4][4].attacked).toBe(true);
+  expect(g.board()[4][4].hit).toBe(false);
+});
+
+test("O gameboard relata que nenhuma embarcacao afundou", () => {
+  const s1 = { length: 1, isSunk: () => false };
+  const s2 = { length: 1, isSunk: () => false };
+  g.addShip(s1, [0, 0], false);
+  g.addShip(s2, [1, 0], false);
+  expect(g.allShipsSunked()).toBe(false);
+});
+
+test("O gameboard relata que nem todas as embarcacoes afundaram", () => {
+  const s1 = { length: 1, isSunk: () => false, hit: () => true };
+  const s2 = { length: 1, isSunk: () => true, hit: () => true };
+  g.addShip(s1, [0, 0], false);
+  g.addShip(s2, [1, 0], false);
+  g.receiveAttack([1, 0]);
+  expect(g.allShipsSunked()).toBe(false);
 });
 
 test("O gameboard relata que todas as embarcações afundaram", () => {
