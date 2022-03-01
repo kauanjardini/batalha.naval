@@ -4,8 +4,9 @@
   "description": "Jogo de batalha naval desenvolvido em javascript",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "test": "jest"
+    "build": "webpack",
+    "test": "jest",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
