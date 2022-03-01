@@ -31,3 +31,15 @@ test("Jogador humano possui tipo 'human'", () => {
 test("Jogador pc possui tipo 'code'", () => {
   expect(Player("pc", true).type).toBe("code");
 });
+
+test("O tipo do jogador nao pode ser reescrito", () => {
+  const p1 = Player("fulano", false);
+  expect(() => {
+    p1.type = "person";
+  }).toThrow();
+
+  const p2 = Player("pc", true);
+  expect(() => {
+    p2.type = "machine";
+  }).toThrow();
+});
