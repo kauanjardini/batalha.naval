@@ -51,3 +51,16 @@ test("O tipo do jogador nao pode ser reescrito", () => {
     p2.type = "machine";
   }).toThrow();
 });
+
+test("Jogador pc mira em peca adjacente quando tem acerto anterior", () => {
+  const p1 = Player("pc", true);
+  const c1 = p1.makeMove();
+  const c2 = p1.makeMove(true, false, true);
+  expect([c2[0] - 1, c2[0], c2[0] + 1]).toContain(c1[0]);
+  expect([c2[1] - 1, c2[1] + 1]).toContain(c1[1]);
+
+  const c3 = p1.makeMove();
+  const c4 = p1.makeMove(true, true, false);
+  expect([c4[0] - 1, c4[0] + 1]).toContain(c3[0]);
+  expect([c4[1] - 1, c4[1], c4[1] + 1]).toContain(c3[1]);
+});
