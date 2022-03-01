@@ -20,6 +20,14 @@ test("Jogador tipo pessoa possui funcao randCoordinates", () => {
   expect(Player("fulano", false).randCoordinates).not.toBe(undefined);
 });
 
+test("Funcao randCoordinates retorna valores de 0 a 9", () => {
+  const p = Player("fulano", false);
+  expect(p.randCoordinates()[0]).toBeGreaterThanOrEqual(0);
+  expect(p.randCoordinates()[1]).toBeGreaterThanOrEqual(0);
+  expect(p.randCoordinates()[0]).toBeLessThanOrEqual(9);
+  expect(p.randCoordinates()[1]).toBeLessThanOrEqual(9);
+});
+
 test("Jogador possui tipo", () => {
   expect(Player("fulano", false).type).not.toBe(undefined);
 });
