@@ -19,3 +19,15 @@ test("Jogador tipo PC possui funcao randCoordinates", () => {
 test("Jogador tipo pessoa possui funcao randCoordinates", () => {
   expect(Player("fulano", false).randCoordinates).not.toBe(undefined);
 });
+
+test("Jogador possui tipo", () => {
+  expect(Player("fulano", false).type).not.toBe(undefined);
+});
+
+test("Jogador humano possui tipo 'human'", () => {
+  expect(Player("fulano", false).type).toBe("human");
+});
+
+test("Jogador pc possui tipo 'code'", () => {
+  expect(Player("pc", true).type).toBe("code");
+});
