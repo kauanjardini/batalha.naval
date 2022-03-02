@@ -1,5 +1,7 @@
 import "./telaInicio.scss";
 import novoElemento from "../utilidades/novoElemento";
+import mostrarTela from "../utilidades/mostrarTela";
+import telaJogadores from "./telaJogadores";
 
 function telaInicio() {
   const h2 = document.createElement("h2");
@@ -17,12 +19,16 @@ function telaInicio() {
   const escolhaPC = novoElemento("button", "", ["escolha"]);
   escolhaPC.appendChild(iconeRobo);
   escolhaPC.appendChild(pPC);
-  escolhaPC.addEventListener("click", () => {});
+  escolhaPC.addEventListener("click", () => {
+    mostrarTela(telaJogadores(false));
+  });
 
   const escolhaPessoa = novoElemento("button", "", ["escolha"]);
   escolhaPessoa.appendChild(iconePessoa);
   escolhaPessoa.appendChild(pPessoa);
-  escolhaPessoa.addEventListener("click", () => {});
+  escolhaPessoa.addEventListener("click", () => {
+    mostrarTela(telaJogadores(true));
+  });
 
   const escolhas = novoElemento("div", "", ["escolhas"]);
   escolhas.appendChild(escolhaPC);
