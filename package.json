@@ -24,12 +24,14 @@
     "eslint": "^8.10.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
+    "html-loader": "^3.1.0",
     "mini-css-extract-plugin": "^2.5.3",
     "node-sass": "^7.0.1",
     "sass-loader": "^12.6.0"
   },
   "dependencies": {
     "eslint-config-prettier": "^8.4.0",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2"
