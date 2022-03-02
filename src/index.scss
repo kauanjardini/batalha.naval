@@ -26,6 +26,7 @@ $fg-button-hover: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 16px;
 }
 
 body {
@@ -74,6 +75,9 @@ header {
 }
 
 main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-grow: 1;
   width: calc(min(1280px, 100%));
 }
@@ -105,5 +109,51 @@ footer {
 
   a:hover {
     opacity: 1;
+  }
+}
+
+#boas-vindas {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 16px;
+
+  .pergunta {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    font-size: 1.3rem;
+    flex-grow: 1;
+
+    h2 {
+      text-align: center;
+    }
+
+    .escolhas {
+      width: 100%;
+      display: grid;
+      grid-template: 1fr / repeat(2, 1fr);
+      gap: 12px;
+      flex-grow: 1;
+
+      @media (orientation: portrait) {
+        grid-template: repeat(2, 1fr) / 1fr;
+      }
+
+      .escolha {
+        padding: 24px;
+        font-size: 1.2rem;
+
+        i {
+          font-size: 5rem;
+        }
+      }
+    }
   }
 }
