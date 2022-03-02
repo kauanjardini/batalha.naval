@@ -20,9 +20,13 @@
   "homepage": "https://github.com/br-adriel/js-battleship#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
+    "css-loader": "^6.6.0",
     "eslint": "^8.10.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.4"
+    "eslint-plugin-import": "^2.25.4",
+    "mini-css-extract-plugin": "^2.5.3",
+    "node-sass": "^7.0.1",
+    "sass-loader": "^12.6.0"
   },
   "dependencies": {
     "eslint-config-prettier": "^8.4.0",

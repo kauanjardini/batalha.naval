@@ -1,15 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
+$bg: #dbebf0;
+$primario: #145da0;
+$primario-fg: #fff;
+$bg-button: #88bbd1;
+$fg-button: #fff;
+$bg-button-hover: #75a6c0;
+$fg-button-hover: #fff;
+
 :root {
   font-size: 16px;
-  --bg: #dbebf0;
-  --primario: #145da0;
-  --primario-fg: #fff;
-  --bg-button: #88bbd1;
-  --fg-button: #fff;
-  --bg-button-hover: #75a6c0;
-  --fg-button-hover: #fff;
 }
 
 * {
@@ -28,7 +29,7 @@
 }
 
 body {
-  background-color: var(--bg);
+  background-color: $bg;
 }
 
 button,
@@ -41,14 +42,14 @@ button {
   padding: 8px 10px;
   border-radius: 4px;
   cursor: pointer;
-  background: var(--bg-button);
-  color: var(--fg-button);
+  background: $bg-button;
+  color: $fg-button;
   transition: 0.2s color, 0.2s background, 0.2s transform;
 }
 
 button:hover {
-  background: var(--bg-button-hover);
-  color: var(--fg-button-hover);
+  background: $bg-button-hover;
+  color: $fg-button-hover;
   transform: scale(0.95);
 }
 
@@ -56,8 +57,8 @@ header,
 footer {
   display: flex;
   width: 100%;
-  background-color: var(--primario);
-  color: var(--primario-fg);
+  background-color: $primario;
+  color: $primario-fg;
   padding: 16px 24px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -65,44 +66,44 @@ footer {
 header {
   justify-content: space-between;
   align-items: center;
-}
 
-header button {
-  animation: zoomIn;
-  animation-duration: 0.5s;
+  button {
+    animation: zoomIn;
+    animation-duration: 0.5s;
+  }
 }
 
 main {
   flex-grow: 1;
-  width: min(1280px, 100%);
+  width: calc(min(1280px, 100%));
 }
 
 footer {
   justify-content: center;
-}
 
-footer .perfil {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
+  .perfil {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
 
-footer .social {
-  display: flex;
-  gap: 8px;
-  font-size: 1.2rem;
-}
-footer p,
-footer a {
-  opacity: 0.8;
-}
+  .social {
+    display: flex;
+    gap: 8px;
+    font-size: 1.2rem;
+  }
+  p,
+  a {
+    opacity: 0.8;
+  }
 
-footer a {
-  color: var(--primario-fg);
-  text-decoration: none;
-  transition: 0.3s opacity;
-}
+  a {
+    color: $primario-fg;
+    text-decoration: none;
+    transition: 0.3s opacity;
+  }
 
-footer a:hover {
-  opacity: 1;
+  a:hover {
+    opacity: 1;
+  }
 }
