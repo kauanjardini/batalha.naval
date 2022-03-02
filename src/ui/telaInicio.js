@@ -1,3 +1,4 @@
+import "./telaInicio.scss";
 import novoElemento from "../utilidades/novoElemento";
 
 function telaInicio() {
