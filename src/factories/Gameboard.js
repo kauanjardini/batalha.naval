@@ -22,12 +22,12 @@ function Gameboard() {
   // initialize gameboard
   clear();
 
-  function addShip(ship, coordinates, vertically) {
+  function addShip(ship, coordinates, horizontally) {
     const x = coordinates[0];
     const y = coordinates[1];
 
     // check if ship doesn't fit
-    if (vertically) {
+    if (horizontally) {
       if (ship.length - 1 + y > 9) {
         throw new Error("The ship exceeds the height of the board");
       }
@@ -37,7 +37,7 @@ function Gameboard() {
 
     // check if there's already a hip in the space
     for (let i = 0; i < ship.length; i += 1) {
-      if (vertically) {
+      if (horizontally) {
         if (gameboard[x][y + i].hasShip) {
           throw new Error("There's already a ship placed on this space");
         }
@@ -48,7 +48,7 @@ function Gameboard() {
 
     // add ship
     for (let i = 0; i < ship.length; i += 1) {
-      if (vertically) {
+      if (horizontally) {
         gameboard[x][y + i].hasShip = true;
         gameboard[x][y + i].ship = ship;
         gameboard[x][y + i].shipPosition = i;
