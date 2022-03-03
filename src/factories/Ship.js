@@ -1,4 +1,4 @@
-function Ship(size = 1) {
+function Ship(size = 1, name = "") {
   if (Number.isNaN(size)) {
     throw new Error("The size of the shit must be an integer");
   } else if (size < 1) {
@@ -42,7 +42,7 @@ function Ship(size = 1) {
   function sections() {
     return [...shipSections];
   }
-  return { length, hit, isSunk, sections };
+  return { name, length, hit, isSunk, sections };
 }
 
 export default Ship;
