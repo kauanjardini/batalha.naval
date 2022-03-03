@@ -1,6 +1,9 @@
 import "./telaJogadores.scss";
 import novoElemento from "../utilidades/novoElemento";
 import novoCampoForm from "../utilidades/novoCampoForm";
+import Player from "../factories/Player";
+import telaPosicionarBarcos from "./telaPosicionarBarcos";
+import mostrarTela from "../utilidades/mostrarTela";
 
 function formJogador(tituloForm, oponentePessoa) {
   const campoNome = novoCampoForm("Informe seu nome:", "inputNome", [
@@ -23,7 +26,7 @@ function formJogador(tituloForm, oponentePessoa) {
       "inputNome2",
       [
         ["type", "text"],
-        ["name", "nome"],
+        ["name", "nome2"],
         ["minlength", "3"],
         ["required", "true"],
       ]
@@ -34,6 +37,17 @@ function formJogador(tituloForm, oponentePessoa) {
   form.appendChild(btnSubmit);
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+
+    const j1 = Player(form.nome.value, false);
+    let j2;
+    if (oponentePessoa) {
+      j2 = Player(form.nome2.value, false);
+    } else {
+      j2 = Player("Computador", true);
+    }
+
+    const jogadores = [j1, j2];
+    mostrarTela(telaPosicionarBarcos(jogadores, []));
   });
 
   const h3 = novoElemento("h3");
