@@ -36,6 +36,11 @@
       .escolha {
         padding: 24px;
         font-size: 1.2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
 
         i {
           font-size: 5rem;

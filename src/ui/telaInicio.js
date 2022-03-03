@@ -13,8 +13,8 @@ function telaInicio() {
   const pPessoa = novoElemento("p");
   pPessoa.innerText = "Outro marujo";
 
-  const iconeRobo = novoElemento("i", "", ["bi", "bi-robot"]);
-  const iconePessoa = novoElemento("i", "", ["bi", "bi-person-circle"]);
+  const iconeRobo = novoElemento("i", "", ["fa-solid", "fa-robot"]);
+  const iconePessoa = novoElemento("i", "", ["fa-solid", "fa-anchor"]);
 
   const escolhaPC = novoElemento("button", "", ["escolha"]);
   escolhaPC.appendChild(iconeRobo);
