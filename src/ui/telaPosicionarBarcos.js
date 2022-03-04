@@ -124,8 +124,8 @@ function telaPosicionarBarcos(jogadores = [], tabuleiros = []) {
   divForm.appendChild(form);
 
   const telaPosicionar = novoElemento("section", "tela-posicionar");
-  telaPosicionar.appendChild(t1);
   telaPosicionar.appendChild(divForm);
+  telaPosicionar.appendChild(t1);
 
   return telaPosicionar;
 }
