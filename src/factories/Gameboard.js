@@ -29,10 +29,10 @@ function Gameboard() {
     // check if ship doesn't fit
     if (horizontally) {
       if (ship.length - 1 + y > 9) {
-        throw new Error("The ship exceeds the height of the board");
+        throw new Error("The ship exceeds the length of the board");
       }
     } else if (ship.length - 1 + x > 9) {
-      throw new Error("The ship exceeds the length of the board");
+      throw new Error("The ship exceeds the height of the board");
     }
 
     // check if there's already a hip in the space
