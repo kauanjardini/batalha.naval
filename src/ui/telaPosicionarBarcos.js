@@ -6,6 +6,7 @@ import formPosicao from "./formPosicao";
 import tabuleiroHtml from "./tabuleiroHtml";
 import telaProxJogador from "./telaProxJogador";
 import mostrarTela from "../utilidades/mostrarTela";
+import Erros from "./Erros";
 
 const linhas = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
@@ -52,6 +53,8 @@ function telaPosicionarBarcos(jogadores = [], tabuleiros = []) {
 
   const p = novoElemento("p");
   p.innerText = "Posicione suas embarcações";
+
+  const mensagensErro = Erros();
 
   const embarcacao = novoElemento("p", "", ["embarcacao"]);
   embarcacao.innerText = `${navios[indexNavios].name.toUpperCase()} (tamanho ${
@@ -104,6 +107,7 @@ function telaPosicionarBarcos(jogadores = [], tabuleiros = []) {
       indexNavios += 1;
       // Verifica se os navios acabaram
       if (navios.length <= indexNavios) {
+        divForm.removeChild(divForm.childNodes[4]);
         divForm.removeChild(divForm.childNodes[3]);
         divForm.removeChild(divForm.childNodes[2]);
         divForm.removeChild(divForm.childNodes[1]);
@@ -114,12 +118,27 @@ function telaPosicionarBarcos(jogadores = [], tabuleiros = []) {
         ].name.toUpperCase()} (tamanho ${navios[indexNavios].length})`;
       }
     } catch (err) {
-      //
+      if (/exceeds the length/g.test(err)) {
+        mensagensErro.novaMensagem(
+          "A embarcação extrapola a largura do tabuleiro"
+        );
+      } else if (/exceeds the height/g.test(err)) {
+        mensagensErro.novaMensagem(
+          "A embarcação extrapola a altura do tabuleiro"
+        );
+      } else if (/already a ship/g.test(err)) {
+        mensagensErro.novaMensagem(
+          "Já há uma embarcação onde você está tentando posicionar"
+        );
+      } else {
+        mensagensErro.novaMensagem("Um erro ocorreu");
+      }
     }
   });
 
   divForm.appendChild(h2);
   divForm.appendChild(p);
+  divForm.appendChild(mensagensErro.elemento);
   divForm.appendChild(embarcacao);
   divForm.appendChild(form);
 
