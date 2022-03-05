@@ -1,4 +1,5 @@
 import novoElemento from "../utilidades/novoElemento";
+import "./Erros.scss";
 
 function Erros() {
   const div = novoElemento("div", "", ["erros-msgs"]);

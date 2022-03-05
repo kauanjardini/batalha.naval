@@ -1,0 +1,35 @@
+.erros-msgs {
+  padding: 2px 4px;
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  text-align: center;
+
+  .mensagem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px;
+    background-color: #971010;
+    border-radius: 4px;
+    animation: fadeIn 0.3s;
+
+    p,
+    i {
+      color: #fff;
+    }
+
+    p {
+      font-size: 0.9rem;
+      text-align: left !important;
+    }
+
+    i {
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
+  }
+}
