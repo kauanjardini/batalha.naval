@@ -3,6 +3,7 @@ import tabuleiroHtml from "./tabuleiroHtml";
 import "./telaJogar.scss";
 import telaProxJogador from "./telaProxJogador";
 import mostrarTela from "../utilidades/mostrarTela";
+import disparo from "../audio/disparo.mp3";
 
 function telaJogar(jogadores, tabuleiros, foiAcerto = false) {
   let jaJogou = false;
@@ -31,6 +32,10 @@ function telaJogar(jogadores, tabuleiros, foiAcerto = false) {
 
     if (id.length === 3 && !jaJogou) {
       jaJogou = true;
+
+      const audioDisparo = new Audio(disparo);
+      audioDisparo.play();
+
       const board = tabuleiros[1].board();
       const x = Number(id[1]);
       const y = Number(id[2]);
