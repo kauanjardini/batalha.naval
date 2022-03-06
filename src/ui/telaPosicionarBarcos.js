@@ -7,12 +7,13 @@ import tabuleiroHtml from "./tabuleiroHtml";
 import telaProxJogador from "./telaProxJogador";
 import mostrarTela from "../utilidades/mostrarTela";
 import Erros from "./Erros";
+import telaJogar from "./telaJogar";
 
 const linhas = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 
 function adicionarNaviosPC(navios, tabuleiro) {
   let index = 0;
-  while (navios.length <= index) {
+  while (navios.length > index) {
     const x = Math.floor(Math.random() * 10);
     const y = Math.floor(Math.random() * 10);
     const h = Math.floor(Math.random() * 2);
@@ -70,15 +71,18 @@ function telaPosicionarBarcos(jogadores = [], tabuleiros = []) {
     if (jogadores[1].type === "code") {
       tabuleiros.push(tab1);
       tabuleiros.push(tab2);
+
+      mostrarTela(telaJogar(jogadores, tabuleiros));
     } else {
       tabuleiros.push(tab1);
 
-      if (jogadores.length === 2) {
-        mostrarTela();
+      if (tabuleiros.length === 2) {
+        const proxTela = telaJogar(jogadores.reverse(), tabuleiros.reverse());
+        mostrarTela(telaProxJogador(jogadores[0].name, proxTela));
+      } else {
+        const proxTela = telaPosicionarBarcos(jogadores.reverse(), tabuleiros);
+        mostrarTela(telaProxJogador(jogadores[0].name, proxTela));
       }
-
-      const proxTela = telaPosicionarBarcos(jogadores.reverse(), tabuleiros);
-      mostrarTela(telaProxJogador(jogadores[0].name, proxTela));
     }
   });
 
