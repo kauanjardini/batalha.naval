@@ -1,12 +1,12 @@
 import novoElemento from "../utilidades/novoElemento";
 
-function conteudoDiv(board, i, j, tabId) {
+function conteudoDiv(board, x, y, tabId) {
   let div;
 
-  if (board[i][j].attacked) {
-    if (board[i][j].hit) {
+  if (board[x] !== undefined && board[x][y].attacked) {
+    if (board[x][y].hit) {
       div = novoElemento("div", "", ["acerto"]);
-      div.innerText = board[i][j].ship.length;
+      div.innerText = board[x][y].ship.length;
     } else {
       const icone = novoElemento("i", "", ["fa-solid", "fa-bomb"]);
 
@@ -14,7 +14,7 @@ function conteudoDiv(board, i, j, tabId) {
       div.appendChild(icone);
     }
   } else {
-    div = novoElemento("div", `${tabId}-${i}-${j}`);
+    div = novoElemento("div", `${tabId}-${x}-${y}`);
   }
 
   return div;
@@ -34,16 +34,17 @@ function tabuleiroHtml(tabId, board = []) {
 
   for (let i = 0; i < 10; i += 1) {
     const p = novoElemento("p");
-    p.innerText = linhas[i];
+    const x = i;
+    p.innerText = linhas[x];
     tabuleiro.appendChild(p);
 
     for (let j = 0; j < 10; j += 1) {
       let div;
-
+      const y = j;
       if (board.length !== 0) {
-        div = conteudoDiv(board, i, j, tabId);
+        div = conteudoDiv(board, x, y, tabId);
       } else {
-        div = novoElemento("div", `${tabId}-${i}-${j}`);
+        div = novoElemento("div", `${tabId}-${x}-${y}`);
       }
       tabuleiro.appendChild(div);
     }
