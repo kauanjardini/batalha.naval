@@ -4,7 +4,7 @@ function Player(name = "Player", computer = false) {
   const usedCoordinates = [];
 
   function randNumber(min = 0, max = 9) {
-    return Math.floor(Math.random() * (max - min)) + min;
+    return Math.floor(Math.random() * (max + 1 - min)) + min;
   }
 
   function randCoordinates() {
@@ -28,7 +28,6 @@ function Player(name = "Player", computer = false) {
     return false;
   }
 
-  let coors = randCoordinates();
   function makeMove(lastWasHit = false, triedX = false, triedY = false) {
     if (lastWasHit) {
       // determine if it will shoot on x or y axis
@@ -51,9 +50,9 @@ function Player(name = "Player", computer = false) {
 
       // y changes, x stays the same
       if (xAxis === 1) {
-        y += add === 1 ? 1 : -1;
+        y += add ? 1 : -1;
         if (!inRange(y) || usedCoordinates.some((c) => equalCoors(c, [x, y]))) {
-          y += add === 0 ? 2 : -2;
+          y -= add ? 2 : -2;
           if (
             !inRange(y) ||
             usedCoordinates.some((c) => equalCoors(c, [x, y]))
@@ -63,25 +62,30 @@ function Player(name = "Player", computer = false) {
             }
             return makeMove(true, true, false);
           }
+          usedCoordinates.push([x, y]);
           return [x, y];
         }
+        usedCoordinates.push([x, y]);
         return [x, y];
       }
 
       // x changes, y stays the same
-      x += add === 1 ? 1 : -1;
+      x += add ? 1 : -1;
       if (!inRange(x) || usedCoordinates.some((c) => equalCoors(c, [x, y]))) {
-        x += add === 0 ? 2 : -2;
+        x -= add ? 2 : -2;
         if (!inRange(x) || usedCoordinates.some((c) => equalCoors(c, [x, y]))) {
           if (triedX) {
             return makeMove();
           }
           return makeMove(true, false, true);
         }
+        usedCoordinates.push([x, y]);
         return [x, y];
       }
+      usedCoordinates.push([x, y]);
       return [x, y];
     }
+    let coors = randCoordinates();
 
     // eslint-disable-next-line no-loop-func
     while (usedCoordinates.some((c) => equalCoors(c, coors))) {
