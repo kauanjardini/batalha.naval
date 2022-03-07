@@ -5,7 +5,7 @@
   gap: 16px;
 
   @media (orientation: portrait) {
-    grid-template: 1fr 2fr / 1fr;
+    grid-template: auto 1fr / 1fr;
   }
 
   @media (orientation: landscape) and (min-width: 600px) {
