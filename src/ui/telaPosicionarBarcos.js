@@ -7,6 +7,7 @@ import tabuleiroHtml from "./tabuleiroHtml";
 import telaProxJogador from "./telaProxJogador";
 import mostrarTela from "../utilidades/mostrarTela";
 import Erros from "./Erros";
+// eslint-disable-next-line import/no-cycle
 import telaJogar from "./telaJogar";
 
 const linhas = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
