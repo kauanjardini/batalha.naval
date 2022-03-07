@@ -9,17 +9,10 @@ function Ship(size = 1, name = "") {
 
   let sunk = false;
   const length = size;
-  const shipSections = [];
+  const sectionsActive = [];
 
   for (let i = 0; i < size; i += 1) {
-    shipSections.push(0);
-  }
-
-  function updateShipState() {
-    const notSunk = shipSections.filter((section) => section === 0);
-    if (notSunk.length === 0) {
-      sunk = true;
-    }
+    sectionsActive.push(true);
   }
 
   function hit(position) {
@@ -27,9 +20,14 @@ function Ship(size = 1, name = "") {
       throw new Error("'position' must be a number from 0 up to the ship size");
     }
 
-    if (shipSections[position] === 0) {
-      shipSections[position] = 1;
-      updateShipState();
+    if (sectionsActive[position]) {
+      sectionsActive[position] = false;
+      sunk = true;
+      for (let i = 0; i < length; i += 1) {
+        if (sectionsActive[i]) {
+          sunk = false;
+        }
+      }
       return true;
     }
     return false;
@@ -40,7 +38,7 @@ function Ship(size = 1, name = "") {
   }
 
   function sections() {
-    return [...shipSections];
+    return [...sectionsActive];
   }
   return { name, length, hit, isSunk, sections };
 }

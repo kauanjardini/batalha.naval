@@ -35,19 +35,19 @@ test("A funcao hit emite erro se posicao nao existe", () => {
 
 test("A funcao sections mostra as sessoes da embarcacao", () => {
   const s = Ship(3);
-  expect(s.sections()).toEqual([0, 0, 0]);
+  expect(s.sections()).toEqual([true, true, true]);
   s.hit(0);
-  expect(s.sections()).toEqual([1, 0, 0]);
+  expect(s.sections()).toEqual([false, true, true]);
   s.hit(1);
-  expect(s.sections()).toEqual([1, 1, 0]);
+  expect(s.sections()).toEqual([false, false, true]);
   s.hit(2);
-  expect(s.sections()).toEqual([1, 1, 1]);
+  expect(s.sections()).toEqual([false, false, false]);
 });
 
 test("A funcao hit atualiza as secoes da embarcacao", () => {
   const s = Ship(3);
   s.hit(1);
-  expect(s.sections()).toEqual([0, 1, 0]);
+  expect(s.sections()).toEqual([true, false, true]);
 });
 
 test("A funcao isSunk mostra que o navio afundou", () => {
