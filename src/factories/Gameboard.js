@@ -48,14 +48,15 @@ function Gameboard() {
 
     // add ship
     for (let i = 0; i < ship.length; i += 1) {
+      const p = i;
       if (horizontally) {
         gameboard[x][y + i].hasShip = true;
         gameboard[x][y + i].ship = ship;
-        gameboard[x][y + i].shipPosition = i;
+        gameboard[x][y + i].shipPosition = p;
       } else {
         gameboard[x + i][y].hasShip = true;
         gameboard[x + i][y].ship = ship;
-        gameboard[x + i][y].shipPosition = i;
+        gameboard[x + i][y].shipPosition = p;
       }
     }
 
@@ -74,10 +75,11 @@ function Gameboard() {
       return "already attacked";
     }
 
+    const sp = gameboard[x][y].shipPosition;
     gameboard[x][y].attacked = true;
     if (gameboard[x][y].hasShip) {
       gameboard[x][y].hit = true;
-      gameboard[x][y].ship.hit(gameboard[x][y].shipPosition);
+      gameboard[x][y].ship.hit(sp);
       return "hit";
     }
     return "miss";
@@ -85,15 +87,16 @@ function Gameboard() {
 
   function allShipsSunked() {
     for (let i = 0; i < 10; i += 1) {
+      const x = i;
       for (let j = 0; j < 10; j += 1) {
-        if (gameboard[i][j].hasShip) {
-          if (!gameboard[i][j].ship.isSunk()) {
+        const y = j;
+        if (gameboard[x][y].hasShip) {
+          if (!gameboard[x][y].attacked) {
             return false;
           }
         }
       }
     }
-
     return true;
   }
 
