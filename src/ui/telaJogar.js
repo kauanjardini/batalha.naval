@@ -77,8 +77,9 @@ function telaJogar(jogadores, tabuleiros, foiAcerto = false) {
       // verifica se jogador ganhou
       if (tabuleiros[1].allShipsSunked()) {
         div.appendChild(telaVencedor(jogadores[0].name));
+        div.removeChild(h2);
 
-        divTab2.removeChild(h2);
+        divTab2.removeChild(divTab2.childNodes[1]);
         divTab2.appendChild(
           tabuleiroHtml("tabOponente", tabuleiros[0].board())
         );
