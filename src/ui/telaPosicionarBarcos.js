@@ -97,6 +97,7 @@ function telaPosicionarBarcos(jogadores = [], tabuleiros = []) {
       tab1.addShip(navios[indexNavios], [x, y], h);
 
       form.reset();
+      form.linha.focus();
       for (let i = 0; i < navios[indexNavios].length; i += 1) {
         let div;
         if (h) {
