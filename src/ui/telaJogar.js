@@ -79,11 +79,17 @@ function telaJogar(jogadores, tabuleiros, foiAcerto = false) {
   const p2 = novoElemento("p");
   p2.innerText = "A situação do seu tabuleiro:";
 
+  const divTab1 = novoElemento("div", "", ["div-tab"]);
+  divTab1.appendChild(p1);
+  divTab1.appendChild(tabOponente);
+
+  const divTab2 = novoElemento("div", "", ["div-tab"]);
+  divTab2.appendChild(p2);
+  divTab2.appendChild(tabPessoal);
+
   section.appendChild(div);
-  section.appendChild(p1);
-  section.appendChild(p2);
-  section.appendChild(tabOponente);
-  section.appendChild(tabPessoal);
+  section.appendChild(divTab1);
+  section.appendChild(divTab2);
 
   return section;
 }
