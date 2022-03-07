@@ -10,7 +10,7 @@ function formPosicao() {
   ]);
 
   const coluna = novoCampoForm("Coluna (1-10):", "colunaInput", [
-    ["tel", "tel"],
+    ["type", "tel"],
     ["required", "true"],
     ["maxlength", "2"],
     ["pattern", "^([1-9]|10)$"],
