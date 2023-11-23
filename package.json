@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/br-adriel/js-battleship.git"
+    "url": "git+https://github.com/kauanjardini/batalha.naval.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/br-adriel/js-battleship/issues"
+    "url": "https://github.com/kauanjardini/batalha.naval/issues"
   },
-  "homepage": "https://github.com/br-adriel/js-battleship#readme",
+  "homepage": "https://github.com/kauanjardini/batalha.naval#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.16.11",
     "css-loader": "^6.6.0",
